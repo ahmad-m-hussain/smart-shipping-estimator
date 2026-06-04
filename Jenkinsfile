@@ -20,16 +20,12 @@ pipeline {
         }
 
         // ── Stage 2: Build Docker Image ──────────────────────────────────────
-       stage('Build Docker Image') {
+     stage('Build Docker Image') {
     steps {
         echo '>>> Building Docker image: shipping-app...'
-        script {
-       
-            docker.build("shipping-app")
-        }
+        sh 'docker build -t shipping-app .'
     }
 }
-
         // ── Stage 3: Deploy Container ────────────────────────────────────────
         stage('Deploy Container') {
             steps {
